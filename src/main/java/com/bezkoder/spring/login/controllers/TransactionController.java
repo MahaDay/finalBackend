@@ -1,6 +1,7 @@
 package com.bezkoder.spring.login.controllers;
 
 import com.bezkoder.spring.login.models.Client;
+import com.bezkoder.spring.login.models.LastMonths;
 import com.bezkoder.spring.login.models.Transaction;
 import com.bezkoder.spring.login.repository.TransactionRepository;
 import com.bezkoder.spring.login.service.TransactionService;
@@ -33,8 +34,48 @@ public class TransactionController {
     }
 
     @GetMapping("/lastyear")
-    public int getLastYear() {
-        return transactionRepository.transactionLastYear().size();
+    public List getLastYear() {
+        LastMonths result = new LastMonths();
+        for(Transaction transaction : transactionRepository.transactionLastYear()){
+            if (transaction.getDate_ajout().getMonth()==0){
+                result.january=result.january+1;
+            }
+            if (transaction.getDate_ajout().getMonth()==1){
+                result.february=result.february+1;
+            }
+            if (transaction.getDate_ajout().getMonth()==2){
+                result.march=result.march+1;
+            }
+            if (transaction.getDate_ajout().getMonth()==3){
+                result.april=result.april+1;
+            }
+            if (transaction.getDate_ajout().getMonth()==4){
+                result.may=result.may+1;
+            }
+            if (transaction.getDate_ajout().getMonth()==5){
+                result.june=result.june+1;
+            }
+            if (transaction.getDate_ajout().getMonth()==6){
+                result.july=result.july+1;
+            }
+            if (transaction.getDate_ajout().getMonth()==7){
+                result. august=result. august+1;
+            }
+            if (transaction.getDate_ajout().getMonth()==8){
+                result. september=result.september+1;
+            }
+            if (transaction.getDate_ajout().getMonth()==9){
+                result.october=result.october+1;
+            }
+            if (transaction.getDate_ajout().getMonth()==10){
+                result.november=result.november+1;
+            }
+            if (transaction.getDate_ajout().getMonth()==11){
+                result.december=result.december+1;
+            }
+
+        }
+        return transactionRepository.transactionLastYear();
     }
 
 
