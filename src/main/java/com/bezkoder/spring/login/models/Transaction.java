@@ -20,7 +20,7 @@ import java.util.Date;
 public class Transaction {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id_Transaction;
+    private Integer id_transaction;
     private Integer montant;
     @Enumerated(EnumType.STRING)
     private MethodePaiement methodePaiement;

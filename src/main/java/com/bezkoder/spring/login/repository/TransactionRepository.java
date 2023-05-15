@@ -32,4 +32,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query(value = "Select * from Transaction  where  date_ajout >= NOW() - INTERVAL 1 YEAR " , nativeQuery = true)
     public List<Transaction> transactionLastYear();
 
+    @Query(value="Select type_transaction , id_produit , id_client , statut_transaction from Transaction ORDER BY date_ajout DESC LIMIT 5",nativeQuery = true)
+    public List<Transaction> transactionLastFive();
+
 }
